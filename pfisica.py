@@ -8,7 +8,7 @@ mb, kb, zb = 1.0, 100.0, 0.15
 A = 0.01
 F = 2.0
 T_TOTAL = 30.0
-Tnomas = 10.0
+Enomas = 10.0
 
 cs = 2*zs*np.sqrt(ks*ms)
 cb = 2*zb*np.sqrt(kb*(mb + ms))
@@ -53,10 +53,10 @@ def simular(f=F, t_total=T_TOTAL, paso=0.002):
 def resultado(d, a, E, m):
     cruces = np.sum((d[m][:-1] < 0) & (d[m][1:] >= 0))
     return dict(amp=(d[m].max() - d[m].min())/2, amax=np.abs(a[m]).max(),
-                Emax=E[m].max(), f=cruces/Tnomas)
+                Emax=E[m].max(), f=cruces/Enomas)
 
 def medir(r):
-    m = r["t"] > r["t"][-1] - Tnomas
+    m = r["t"] > r["t"][-1] - Enomas
     return (resultado(r["d_f"], r["a_f"], r["E_f"], m),
             resultado(r["d_i"], r["a_i"], r["E_i"], m))
 
